@@ -19,6 +19,7 @@
   您的浏览器不支持 HTML5 video 标签。
 </video>
 <p>播放位置: <span id="demo"></span></p>
+<button type="button" id="quickEnter">快进</button>
 
 <script>
 /*为 video 元素添加 ontimeupdate 事件，如果当前播放位置改变则执行函数  */
@@ -39,8 +40,13 @@ function setPlayLocation(){
     };
 }
 
+var quickEnter = document.getElementById("quickEnter");
+quickEnter.onclick = setPlayLocation
 // 提示该视频已准备好开始播放
-myVideo.oncanplay = setPlayLocation
+// myVideo.oncanplay = setPlayLocation
+window.onload = function(){
+	quickEnter.click()
+}
 </script>
 </body>
 </html>
