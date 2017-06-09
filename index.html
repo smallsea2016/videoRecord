@@ -39,7 +39,12 @@ function setPlayLocation(){
     };
 }
 
-window.onload = setPlayLocation;
+window.onload = function(){
+	console.log("myVideo.readyState:"+myVideo.readyState);
+	if (myVideo.readyState == 4) {
+		setPlayLocation();
+	};
+}
 </script>
 </body>
 </html>
