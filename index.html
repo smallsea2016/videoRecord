@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>视频时间记录</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta name="keywords" content=""/>
+    <meta name="description" content="" />
+</head>
+<body>
+
+<h2>记录视频播放位置</h2>
+<video id="myVideo" width="320" height="176" controls>
+  <source src="Hm812.mp4">
+  您的浏览器不支持 HTML5 video 标签。
+</video>
+<p>播放位置: <span id="demo"></span></p>
+
+<script>
+/*为 video 元素添加 ontimeupdate 事件，如果当前播放位置改变则执行函数  */
+var myVideo = document.getElementById("myVideo");
+myVideo.ontimeupdate = recordPlayLocation;
+function recordPlayLocation() {
+    document.getElementById("demo").innerHTML = myVideo.currentTime;
+    if (typeof('localStorage') !== 'undefined') {
+    	localStorage.setItem("playLocation",myVideo.currentTime);
+    };
+}
+/*快进到播放的位置*/
+function setPlayLocation(){
+	if (typeof('localStorage') !== 'undefined' && localStorage.getItem("playLocation") !== 'undefined') {
+		var currentTime = localStorage.getItem("playLocation");
+    	// alert("视频播放位置记录:"+currentTime);
+    	myVideo.currentTime = currentTime;
+    };
+}
+
+window.onload = setPlayLocation;
+</script>
+</body>
+</html>
