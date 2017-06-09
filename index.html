@@ -34,7 +34,7 @@ function recordPlayLocation() {
 function setPlayLocation(){
 	if (typeof('localStorage') !== 'undefined' && localStorage.getItem("playLocation") !== 'undefined') {
 		var currentTime = localStorage.getItem("playLocation");
-    	// alert("视频播放位置记录:"+currentTime);
+    	alert("视频播放位置记录:"+currentTime);
     	myVideo.currentTime = currentTime;
     };
 }
