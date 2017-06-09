@@ -39,12 +39,8 @@ function setPlayLocation(){
     };
 }
 
-window.onload = function(){
-	console.log("myVideo.readyState:"+myVideo.readyState);
-	if (myVideo.readyState == 4) {
-		setPlayLocation();
-	};
-}
+// 视频的元数据已加载
+myVideo.onloadedmetadata = setPlayLocation
 </script>
 </body>
 </html>
